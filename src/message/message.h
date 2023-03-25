@@ -1,8 +1,8 @@
 #ifndef DATE_H
 #define DATE_H
 
-#include <string>;
-#include <iostream>;
+#include <string>
+#include <iostream>
 
 class Message {        // The class
     public:              // Access specifier

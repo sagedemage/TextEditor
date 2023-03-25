@@ -1,6 +1,6 @@
 // Create a Car class with some attributes
 
-#include "message.h";
+#include "message.h"
 
 Message::Message(std::string user_input) {
     this->user_input = user_input;

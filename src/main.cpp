@@ -1,7 +1,7 @@
-#include <iostream>;
-#include <string>;
+#include <iostream>
+#include <string>
 
-#include "message/message.h";
+#include "message/message.h"
 
 int main() {
     std::string input;
