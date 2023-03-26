@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   widget->setLayout(layout);
   setCentralWidget(widget);
 
+  QLineEdit *line_edit = new QLineEdit("");
+
   // Create the button, make "this" the parent
   QPushButton *button1 = new QPushButton("Number 1");
   QPushButton *button2 = new QPushButton("Number 2");
@@ -23,15 +25,34 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   QPushButton *button8 = new QPushButton("Number 8");
   QPushButton *button9 = new QPushButton("Number 9");
 
-  layout->addWidget(button1, 0, 0);
-  layout->addWidget(button2, 0, 1);
-  layout->addWidget(button3, 0, 2);
-  layout->addWidget(button4, 1, 0);
-  layout->addWidget(button5, 1, 1);
-  layout->addWidget(button6, 1, 2);
-  layout->addWidget(button7, 2, 0);
-  layout->addWidget(button8, 2, 1);
-  layout->addWidget(button9, 2, 2);
+  QVBoxLayout *vboxlayout = new QVBoxLayout();
+  vboxlayout->addWidget(line_edit);
+
+  layout->addLayout(vboxlayout, 0, 0, 1, 1);
+
+  QHBoxLayout *hboxlayout1 = new QHBoxLayout();
+
+  hboxlayout1->addWidget(button1);
+  hboxlayout1->addWidget(button2);
+  hboxlayout1->addWidget(button3);
+
+  layout->addLayout(hboxlayout1, 1, 0, 1, 1);
+
+  QHBoxLayout *hboxlayout2 = new QHBoxLayout();
+
+  hboxlayout2->addWidget(button4);
+  hboxlayout2->addWidget(button5);
+  hboxlayout2->addWidget(button6);
+
+  layout->addLayout(hboxlayout2, 2, 0, 1, 1);
+
+  QHBoxLayout *hboxlayout3 = new QHBoxLayout();
+
+  hboxlayout3->addWidget(button7);
+  hboxlayout3->addWidget(button8);
+  hboxlayout3->addWidget(button9);
+
+  layout->addLayout(hboxlayout3, 3, 0, 1, 1);
 
   // Connect button signal to appropriate slot
   connect(button1, &QPushButton::clicked, this, &MainWindow::handleButton1);
