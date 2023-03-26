@@ -33,22 +33,59 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   layout->addWidget(button8, 2, 1);
   layout->addWidget(button9, 2, 2);
 
-  // set size and location of the button
-  // m_button->setGeometry(QRect(QPoint(100, 100), QSize(200, 50)));
-
   // Connect button signal to appropriate slot
-  connect(button1, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button2, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button3, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button4, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button5, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button6, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button7, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button8, &QPushButton::clicked, this, &MainWindow::handleButton);
-  connect(button9, &QPushButton::clicked, this, &MainWindow::handleButton);
+  connect(button1, &QPushButton::clicked, this, &MainWindow::handleButton1);
+  connect(button2, &QPushButton::clicked, this, &MainWindow::handleButton2);
+  connect(button3, &QPushButton::clicked, this, &MainWindow::handleButton3);
+  connect(button4, &QPushButton::clicked, this, &MainWindow::handleButton4);
+  connect(button5, &QPushButton::clicked, this, &MainWindow::handleButton5);
+  connect(button6, &QPushButton::clicked, this, &MainWindow::handleButton6);
+  connect(button7, &QPushButton::clicked, this, &MainWindow::handleButton7);
+  connect(button8, &QPushButton::clicked, this, &MainWindow::handleButton8);
+  connect(button9, &QPushButton::clicked, this, &MainWindow::handleButton9);
 }
 
-void MainWindow::handleButton()
+void MainWindow::handleButton1()
 {
-  std::cout << "Hello World" << std::endl;
+  std::cout << "Number 1" << std::endl;
+}
+
+void MainWindow::handleButton2()
+{
+  std::cout << "Number 2" << std::endl;
+}
+
+void MainWindow::handleButton3()
+{
+  std::cout << "Number 3" << std::endl;
+}
+
+void MainWindow::handleButton4()
+{
+  std::cout << "Number 4" << std::endl;
+}
+
+void MainWindow::handleButton5()
+{
+  std::cout << "Number 5" << std::endl;
+}
+
+void MainWindow::handleButton6()
+{
+  std::cout << "Number 6" << std::endl;
+}
+
+void MainWindow::handleButton7()
+{
+  std::cout << "Number 7" << std::endl;
+}
+
+void MainWindow::handleButton8()
+{
+  std::cout << "Number 8" << std::endl;
+}
+
+void MainWindow::handleButton9()
+{
+  std::cout << "Number 9" << std::endl;
 }

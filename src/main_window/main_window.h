@@ -15,7 +15,15 @@ class MainWindow : public QMainWindow
 public:
   explicit MainWindow(QWidget *parent = nullptr);
 private slots:
-  void handleButton();
+  void handleButton1();
+  void handleButton2();
+  void handleButton3();
+  void handleButton4();
+  void handleButton5();
+  void handleButton6();
+  void handleButton7();
+  void handleButton8();
+  void handleButton9();
 private:
   QPushButton *m_button;
 };
