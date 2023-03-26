@@ -7,10 +7,6 @@
 #include "message/message.h"
 #include "main_window/main_window.h"
 
-void print_text() {
-    std::cout << "s" << std::endl;
-}
-
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
