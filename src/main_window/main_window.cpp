@@ -1,8 +1,6 @@
 #include "main_window.h"
 #include <iostream>
-
-// #include <QApplication>
-// #include <QPushButton>
+#include <QApplication>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -12,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   widget->setLayout(layout);
   setCentralWidget(widget);
 
-  QLineEdit *line_edit = new QLineEdit("");
+  //QLineEdit *line_edit = new QLineEdit("");
+
+  //line_edit->setText("Word");
 
   // Create the button, make "this" the parent
   QPushButton *button1 = new QPushButton("Number 1");
@@ -68,45 +68,45 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::handleButton1()
 {
-  std::cout << "Number 1" << std::endl;
+  line_edit->setText("Number 1");
 }
 
 void MainWindow::handleButton2()
 {
-  std::cout << "Number 2" << std::endl;
+  line_edit->setText("Number 2");
 }
 
 void MainWindow::handleButton3()
 {
-  std::cout << "Number 3" << std::endl;
+  line_edit->setText("Number 3");
 }
 
 void MainWindow::handleButton4()
 {
-  std::cout << "Number 4" << std::endl;
+  line_edit->setText("Number 4");
 }
 
 void MainWindow::handleButton5()
 {
-  std::cout << "Number 5" << std::endl;
+  line_edit->setText("Number 5");
 }
 
 void MainWindow::handleButton6()
 {
-  std::cout << "Number 6" << std::endl;
+  line_edit->setText("Number 6");
 }
 
 void MainWindow::handleButton7()
 {
-  std::cout << "Number 7" << std::endl;
+  line_edit->setText("Number 7");
 }
 
 void MainWindow::handleButton8()
 {
-  std::cout << "Number 8" << std::endl;
+  line_edit->setText("Number 8");
 }
 
 void MainWindow::handleButton9()
 {
-  std::cout << "Number 9" << std::endl;
+  line_edit->setText("Number 9");
 }
