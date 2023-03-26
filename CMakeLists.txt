@@ -9,7 +9,11 @@ set(OPTIMIZE_FLAG "-O3")
 set(WARNING_FLAGS "-Werror -Wpedantic -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${STANDARD_CXX_VERSION_FLAG} ${OPTIMIZE_FLAG} ${WARNING_FLAGS}")
 
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
+
 add_executable(main 
     src/main.cpp 
     src/message/message.cpp
 )
+
+target_link_libraries(main Qt5::Widgets)
