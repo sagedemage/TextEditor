@@ -36,9 +36,7 @@ int main(int argc, char **argv)
     QPushButton *button8 = new QPushButton("Number 8");
     QPushButton *button9 = new QPushButton("Number 9");
 
-    QObject::connect(button1, SIGNAL(clicked()), &app, SLOT(print_text()));
-
-    //connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(pushButton_Clicked));
+    QObject::connect(button1, &QPushButton::clicked, &app, &QApplication::quit);
 
     layout->addWidget(button1, 0, 0);
     layout->addWidget(button2, 0, 1);
