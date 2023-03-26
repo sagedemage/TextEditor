@@ -14,8 +14,7 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 add_executable(main 
-    src/main.cpp 
-    src/message/message.cpp
+    src/main.cpp
     src/main_window/main_window.cpp
 )
 

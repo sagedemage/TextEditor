@@ -4,7 +4,6 @@
 #include <QPushButton>
 #include <QtWidgets>
 
-#include "message/message.h"
 #include "main_window/main_window.h"
 
 int main(int argc, char **argv)
