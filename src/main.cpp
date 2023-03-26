@@ -20,6 +20,8 @@ int main(int argc, char **argv)
 
     QWidget *window = new QWidget;
 
+    QGridLayout *layout = new QGridLayout(window);
+
     QPushButton *button1 = new QPushButton("Number 1");
     QPushButton *button2 = new QPushButton("Number 2");
     QPushButton *button3 = new QPushButton("Number 3");
@@ -29,8 +31,6 @@ int main(int argc, char **argv)
     QPushButton *button7 = new QPushButton("Number 7");
     QPushButton *button8 = new QPushButton("Number 8");
     QPushButton *button9 = new QPushButton("Number 9");
-
-    QGridLayout *layout = new QGridLayout(window);
 
     layout->addWidget(button1, 0, 0);
     layout->addWidget(button2, 0, 1);
