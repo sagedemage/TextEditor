@@ -40,7 +40,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::handleSaveButton()
 {
-  text_edit->setText("Save");
+  //text_edit->setText("Save");
+  QString plain_text = text_edit->toPlainText();
+  std::string text_string = plain_text.toStdString();
+  std::cout << text_string << std::endl;
 }
 
 void MainWindow::handleOpenButton()
