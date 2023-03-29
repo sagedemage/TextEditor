@@ -69,8 +69,10 @@ std::string MainWindow::getTextFromFile(std::ifstream &ReadFile) {
 void MainWindow::handleOpenButton()
 {
   /* Open a file */
+  QString file = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
+
   // Create and open a text file
-  std::ifstream ReadFile("../files/file.txt");
+  std::ifstream ReadFile(file.toStdString());
 
   std::string myText = MainWindow::getTextFromFile(ReadFile);
 
