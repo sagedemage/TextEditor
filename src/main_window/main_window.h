@@ -14,24 +14,24 @@ namespace Ui {
  
 class MainWindow : public QMainWindow
 {
-  Q_OBJECT
-public:
-  explicit MainWindow(QWidget *parent = nullptr);
-  QTextEdit *text_edit = new QTextEdit("");
+    Q_OBJECT
+    public:
+        explicit MainWindow(QWidget *parent = nullptr);
+        QTextEdit *text_edit = new QTextEdit("");
 
-private slots:
-  void handleSaveButton();
-  void handleOpenButton();
-  void handleSaveAsButton();
+    private slots:
+        void handleSaveButton();
+        void handleOpenButton();
+        void handleSaveAsButton();
 
-private:
-  QPushButton *save_button;
-  QPushButton *open_button;
-  QPushButton *save_as_button;
-  QVBoxLayout *vboxlayout;
-  QHBoxLayout *hboxlayout;
-  QString file_path;
-  std::string getTextFromFile(std::ifstream &ReadFile);
+    private:
+        QPushButton *save_button;
+        QPushButton *open_button;
+        QPushButton *save_as_button;
+        QVBoxLayout *vboxlayout;
+        QHBoxLayout *hboxlayout;
+        QString file_path;
+        std::string getTextFromFile(std::ifstream &ReadFile);
 };
 
 #endif // MAINWINDOW_H
