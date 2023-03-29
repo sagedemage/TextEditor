@@ -1,6 +1,7 @@
 #include "main_window.h"
 #include <iostream>
 #include <QApplication>
+#include <fstream>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -44,6 +45,15 @@ void MainWindow::handleSaveButton()
   QString plain_text = text_edit->toPlainText();
   std::string text_string = plain_text.toStdString();
   std::cout << text_string << std::endl;
+
+  // Create and open a text file
+  std::ofstream MyFile("../files/file.txt");
+
+  // Write to the file
+  MyFile << text_string;
+
+  // Close the file
+  MyFile.close();
 }
 
 void MainWindow::handleOpenButton()
