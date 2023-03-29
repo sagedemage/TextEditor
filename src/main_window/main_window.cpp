@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   layout->addLayout(hboxlayout, 0, 0, 1, 1);
 
   vboxlayout = new QVBoxLayout();
-  vboxlayout->addWidget(line_edit);
+  vboxlayout->addWidget(text_edit);
 
   layout->addLayout(vboxlayout, 1, 0, 1, 1);
 
@@ -40,16 +40,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::handleSaveButton()
 {
-  line_edit->setText("Save");
+  text_edit->setText("Save");
 }
 
 void MainWindow::handleOpenButton()
 {
-  line_edit->setText("Open");
+  text_edit->setText("Open");
 }
 
 void MainWindow::handleCreateButton()
 {
-  line_edit->setText("Create");
+  text_edit->setText("Create");
 }
 

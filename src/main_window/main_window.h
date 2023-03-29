@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
   Q_OBJECT
 public:
   explicit MainWindow(QWidget *parent = nullptr);
-  QLineEdit *line_edit = new QLineEdit("");
+  QTextEdit *text_edit = new QTextEdit("");
 
 private slots:
   void handleSaveButton();
