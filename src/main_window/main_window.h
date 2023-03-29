@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QtWidgets>
 #include <QApplication>
+#include <iostream>
+#include <fstream>
 
 namespace Ui {
   class MainWindow;
@@ -28,5 +30,6 @@ private:
   QPushButton *create_button;
   QVBoxLayout *vboxlayout;
   QHBoxLayout *hboxlayout;
+  std::string getTextFromFile(std::ifstream &ReadFile);
 };
 #endif // MAINWINDOW_H

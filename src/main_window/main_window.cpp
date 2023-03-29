@@ -1,7 +1,4 @@
 #include "main_window.h"
-#include <iostream>
-#include <QApplication>
-#include <fstream>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -56,14 +53,8 @@ void MainWindow::handleSaveButton()
   MyFile.close();
 }
 
-void MainWindow::handleOpenButton()
-{
-  /* Open a file */
-  // Create and open a text file
-  std::ifstream ReadFile("../files/file.txt");
-
+std::string MainWindow::getTextFromFile(std::ifstream &ReadFile) {
   std::string myText;
-
   std::string tempText;
 
   while (getline (ReadFile, tempText)) {
@@ -72,6 +63,17 @@ void MainWindow::handleOpenButton()
     myText += tempText + "\n";
 
   }
+  return myText;
+}
+
+
+void MainWindow::handleOpenButton()
+{
+  /* Open a file */
+  // Create and open a text file
+  std::ifstream ReadFile("../files/file.txt");
+
+  std::string myText = MainWindow::getTextFromFile(ReadFile);
 
   text_edit->setText(QString::fromStdString(myText));
 }
