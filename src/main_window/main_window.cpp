@@ -40,16 +40,21 @@ void MainWindow::handleSaveButton()
 {
   /* Save a File */
   QString plain_text = text_edit->toPlainText();
-  std::string text_string = plain_text.toStdString();
+    std::string text_string = plain_text.toStdString();
 
-  // Create and open a text file
-  std::ofstream MyFile("../files/file.txt");
+    if (file_path.toStdString() != "") {
+      // Create and open a text file
+      std::ofstream MyFile(file_path.toStdString());
 
-  // Write to the file
-  MyFile << text_string;
+      // Write to the file
+      MyFile << text_string;
 
-  // Close the file
-  MyFile.close();
+      // Close the file
+      MyFile.close();
+    }
+    else {
+      std::cout << "No File Selected" << std::endl;
+    }
 }
 
 std::string MainWindow::getTextFromFile(std::ifstream &ReadFile) {
@@ -69,10 +74,10 @@ std::string MainWindow::getTextFromFile(std::ifstream &ReadFile) {
 void MainWindow::handleOpenButton()
 {
   /* Open a file */
-  QString file = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
+  file_path = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
 
   // Create and open a text file
-  std::ifstream ReadFile(file.toStdString());
+  std::ifstream ReadFile(file_path.toStdString());
 
   std::string myText = MainWindow::getTextFromFile(ReadFile);
 

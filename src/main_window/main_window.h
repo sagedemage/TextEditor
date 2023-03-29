@@ -30,6 +30,7 @@ private:
   QPushButton *create_button;
   QVBoxLayout *vboxlayout;
   QHBoxLayout *hboxlayout;
+  QString file_path;
   std::string getTextFromFile(std::ifstream &ReadFile);
 };
 #endif // MAINWINDOW_H
