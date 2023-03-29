@@ -8,10 +8,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
   widget->setLayout(layout);
   setCentralWidget(widget);
 
-  //QLineEdit *line_edit = new QLineEdit("");
-
-  //line_edit->setText("Word");
-
   // Create the button, make "this" the parent
   save_button = new QPushButton("Save");
   open_button = new QPushButton("Open");
