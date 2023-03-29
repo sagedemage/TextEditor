@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::handleSaveButton()
 {
-  //text_edit->setText("Save");
+  /* Save a File */
   QString plain_text = text_edit->toPlainText();
   std::string text_string = plain_text.toStdString();
   std::cout << text_string << std::endl;
@@ -58,11 +58,29 @@ void MainWindow::handleSaveButton()
 
 void MainWindow::handleOpenButton()
 {
-  text_edit->setText("Open");
+  /* Open a file */
+  // Create and open a text file
+  std::ifstream ReadFile("../files/file.txt");
+
+  std::string myText;
+
+  std::string tempText;
+
+  while (getline (ReadFile, tempText)) {
+    // Output the text from the file
+    //cout << myText;
+    myText += tempText + "\n";
+
+  }
+
+  text_edit->setText(QString::fromStdString(myText));
 }
 
 void MainWindow::handleCreateButton()
 {
+  /* Create a file */
+  // Create and open a text file
+  std::ofstream MyFile("../files/file.txt");
   text_edit->setText("Create");
 }
 
