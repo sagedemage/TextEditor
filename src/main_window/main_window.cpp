@@ -41,7 +41,6 @@ void MainWindow::handleSaveButton()
   /* Save a File */
   QString plain_text = text_edit->toPlainText();
   std::string text_string = plain_text.toStdString();
-  std::cout << text_string << std::endl;
 
   // Create and open a text file
   std::ofstream MyFile("../files/file.txt");
