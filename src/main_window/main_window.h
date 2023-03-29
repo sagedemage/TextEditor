@@ -22,15 +22,16 @@ public:
 private slots:
   void handleSaveButton();
   void handleOpenButton();
-  void handleCreateButton();
+  void handleSaveAsButton();
 
 private:
   QPushButton *save_button;
   QPushButton *open_button;
-  QPushButton *create_button;
+  QPushButton *save_as_button;
   QVBoxLayout *vboxlayout;
   QHBoxLayout *hboxlayout;
   QString file_path;
   std::string getTextFromFile(std::ifstream &ReadFile);
 };
+
 #endif // MAINWINDOW_H
