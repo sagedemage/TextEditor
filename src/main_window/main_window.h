@@ -18,30 +18,15 @@ public:
   QLineEdit *line_edit = new QLineEdit("");
 
 private slots:
-  void handleButton1();
-  void handleButton2();
-  void handleButton3();
-  void handleButton4();
-  void handleButton5();
-  void handleButton6();
-  void handleButton7();
-  void handleButton8();
-  void handleButton9();
+  void handleSaveButton();
+  void handleOpenButton();
+  void handleCreateButton();
 
 private:
-  QPushButton *button1;
-  QPushButton *button2;
-  QPushButton *button3;
-  QPushButton *button4;
-  QPushButton *button5;
-  QPushButton *button6;
-  QPushButton *button7;
-  QPushButton *button8;
-  QPushButton *button9;
-
+  QPushButton *save_button;
+  QPushButton *open_button;
+  QPushButton *create_button;
   QVBoxLayout *vboxlayout;
-  QHBoxLayout *hboxlayout1;
-  QHBoxLayout *hboxlayout2;
-  QHBoxLayout *hboxlayout3;
+  QHBoxLayout *hboxlayout;
 };
 #endif // MAINWINDOW_H
