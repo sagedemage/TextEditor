@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     widget->setLayout(layout);
     setCentralWidget(widget);
 
+    text_edit = new QTextEdit("");
+
     // Create the button, make "this" the parent
     save_button = new QPushButton("Save");
     open_button = new QPushButton("Open");
@@ -30,6 +32,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(save_button, &QPushButton::clicked, this, &MainWindow::handleSaveButton);
     connect(open_button, &QPushButton::clicked, this, &MainWindow::handleOpenButton);
     connect(save_as_button, &QPushButton::clicked, this, &MainWindow::handleSaveAsButton);
+
+    MainWindow::setWindowTitle(title);
 }
 
 void MainWindow::handleSaveButton()
@@ -89,6 +93,10 @@ void MainWindow::handleOpenButton()
     std::string myText = MainWindow::getTextFromFile(ReadFile);
 
     text_edit->setText(QString::fromStdString(myText));
+
+    title = main_title + " - " + file_path;
+
+    MainWindow::setWindowTitle(title);
 }
 
 void MainWindow::handleSaveAsButton()
@@ -111,5 +119,4 @@ void MainWindow::handleSaveAsButton()
     // Close the file
     MyFile.close();
 }
-
 

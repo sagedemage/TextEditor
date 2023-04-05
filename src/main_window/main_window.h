@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     public:
         explicit MainWindow(QWidget *parent = nullptr);
-        QTextEdit *text_edit = new QTextEdit("");
+        QTextEdit *text_edit;
 
     private slots:
         void handleSaveButton();
@@ -31,6 +31,8 @@ class MainWindow : public QMainWindow
         QVBoxLayout *vboxlayout;
         QHBoxLayout *hboxlayout;
         QString file_path;
+        const QString main_title = "QT5 Window";
+        QString title = main_title + " - Untitled";
         std::string getTextFromFile(std::ifstream &ReadFile);
 };
 
