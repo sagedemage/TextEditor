@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QtWidgets>
 #include <QApplication>
+#include <iostream>
+#include <fstream>
 
 namespace Ui {
   class MainWindow;
@@ -12,36 +14,28 @@ namespace Ui {
  
 class MainWindow : public QMainWindow
 {
-  Q_OBJECT
-public:
-  explicit MainWindow(QWidget *parent = nullptr);
-  QLineEdit *line_edit = new QLineEdit("");
+    Q_OBJECT
+    public:
+        explicit MainWindow(QWidget *parent = nullptr);
+        QTextEdit *text_edit;
 
-private slots:
-  void handleButton1();
-  void handleButton2();
-  void handleButton3();
-  void handleButton4();
-  void handleButton5();
-  void handleButton6();
-  void handleButton7();
-  void handleButton8();
-  void handleButton9();
+    private slots:
+        void handleSaveButton();
+        void handleOpenButton();
+        void handleSaveAsButton();
 
-private:
-  QPushButton *button1;
-  QPushButton *button2;
-  QPushButton *button3;
-  QPushButton *button4;
-  QPushButton *button5;
-  QPushButton *button6;
-  QPushButton *button7;
-  QPushButton *button8;
-  QPushButton *button9;
-
-  QVBoxLayout *vboxlayout;
-  QHBoxLayout *hboxlayout1;
-  QHBoxLayout *hboxlayout2;
-  QHBoxLayout *hboxlayout3;
+    private:
+        QPushButton *save_button;
+        QPushButton *open_button;
+        QPushButton *save_as_button;
+        QVBoxLayout *vboxlayout;
+        QHBoxLayout *hboxlayout;
+        QString file_path;
+        const QString main_title = "Text Editor";
+        QString title = main_title + " - Untitled";
+        std::string getTextFromFile(std::ifstream &ReadFile);
+        void changeWindowTitleForNewFilePath();
+        void convertHomPathWithTilde();
 };
+
 #endif // MAINWINDOW_H

@@ -11,11 +11,8 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
     
     MainWindow mainWindow;
-    mainWindow.resize(480, 360);
+    mainWindow.resize(840, 630);
     mainWindow.show();
-
-    mainWindow.setWindowTitle(
-        QApplication::translate("toplevel", "QT5 Window"));
 
     return app.exec();
 }
