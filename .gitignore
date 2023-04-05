@@ -1,5 +1,5 @@
 build/
 .vscode/
 .kdev4/
-QtGuiApp.kdev4
+*.kdev4
 files/
