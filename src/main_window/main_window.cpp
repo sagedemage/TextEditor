@@ -124,7 +124,6 @@ void MainWindow::handleSaveAsButton()
 
 void MainWindow::changeWindowTitleForNewFilePath() {
     /* Change window title based on the location of the file opened */
-
     MainWindow::convertHomPathWithTilde();
 
     if (file_path != "") {
@@ -134,6 +133,7 @@ void MainWindow::changeWindowTitleForNewFilePath() {
 }
 
 void MainWindow::convertHomPathWithTilde() {
+    /* Convert file path with a file path with a tilde */
     QString home = QDir::home().path();
 
     int home_path_length = home.length();
