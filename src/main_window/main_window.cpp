@@ -90,13 +90,13 @@ void MainWindow::handleOpenButton()
     // Create and open a text file
     std::ifstream ReadFile(file_path.toStdString());
 
-    std::string myText = MainWindow::getTextFromFile(ReadFile);
+    // get text from the text file
+    std::string text_of_file = MainWindow::getTextFromFile(ReadFile);
 
-    text_edit->setText(QString::fromStdString(myText));
+    // set text for the text edit widget
+    text_edit->setText(QString::fromStdString(text_of_file));
 
-    title = main_title + " - " + file_path;
-
-    MainWindow::setWindowTitle(title);
+    MainWindow::changeWindowTitleForNewFilePath();
 }
 
 void MainWindow::handleSaveAsButton()
@@ -118,5 +118,15 @@ void MainWindow::handleSaveAsButton()
 
     // Close the file
     MyFile.close();
+
+    MainWindow::changeWindowTitleForNewFilePath();
+}
+
+void MainWindow::changeWindowTitleForNewFilePath() {
+    /* Change window title based on the location of the file opened */
+    if (file_path != "") {
+        title = main_title + " - " + file_path;
+        MainWindow::setWindowTitle(title);
+    }
 }
 

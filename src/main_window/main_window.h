@@ -34,6 +34,7 @@ class MainWindow : public QMainWindow
         const QString main_title = "QT5 Window";
         QString title = main_title + " - Untitled";
         std::string getTextFromFile(std::ifstream &ReadFile);
+        void changeWindowTitleForNewFilePath();
 };
 
 #endif // MAINWINDOW_H
