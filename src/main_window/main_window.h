@@ -35,6 +35,7 @@ class MainWindow : public QMainWindow
         QString title = main_title + " - Untitled";
         std::string getTextFromFile(std::ifstream &ReadFile);
         void changeWindowTitleForNewFilePath();
+        void convertHomPathWithTilde();
 };
 
 #endif // MAINWINDOW_H

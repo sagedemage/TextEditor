@@ -124,9 +124,20 @@ void MainWindow::handleSaveAsButton()
 
 void MainWindow::changeWindowTitleForNewFilePath() {
     /* Change window title based on the location of the file opened */
+
+    MainWindow::convertHomPathWithTilde();
+
     if (file_path != "") {
         title = main_title + " - " + file_path;
         MainWindow::setWindowTitle(title);
     }
+}
+
+void MainWindow::convertHomPathWithTilde() {
+    QString home = QDir::home().path();
+
+    int home_path_length = home.length();
+
+    file_path.replace(0, home_path_length, "~");
 }
 
