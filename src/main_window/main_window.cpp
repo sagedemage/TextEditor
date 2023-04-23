@@ -159,15 +159,17 @@ void MainWindow::createActions()
     SaveAct = new QAction(tr("&Save"), this);
     SaveAct->setShortcuts(QKeySequence::Save);
     SaveAct->setStatusTip(tr("Save the file"));
+    connect(SaveAct, &QAction::triggered, this, &MainWindow::handleSaveButton);
 
     // Open Action
     OpenAct = new QAction(tr("&Open"), this);
     OpenAct->setShortcuts(QKeySequence::Open);
     OpenAct->setStatusTip(tr("Open the file"));
+    connect(OpenAct, &QAction::triggered, this, &MainWindow::handleOpenButton);
 
     SaveAsAct = new QAction(tr("&Save As"), this);
     SaveAsAct->setShortcuts(QKeySequence::SaveAs);
     SaveAsAct->setStatusTip(tr("Save as a new file"));
-    //connect(newAct, &QAction::triggered, this, &MainWindow::newFile);
+    connect(SaveAsAct, &QAction::triggered, this, &MainWindow::handleSaveAsButton);
 }
 
