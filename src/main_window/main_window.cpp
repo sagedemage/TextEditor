@@ -35,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     MainWindow::setWindowTitle(title);
 
+    createActions();
+
     createMenus();
 }
 
@@ -146,8 +148,26 @@ void MainWindow::convertHomPathWithTilde() {
 void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
-    fileMenu->addAction(newAct);
-    fileMenu->addAction(openAct);
-    fileMenu->addAction(saveAct);
+    fileMenu->addAction(SaveAct);
+    fileMenu->addAction(OpenAct);
+    fileMenu->addAction(SaveAsAct);
+}
+
+void MainWindow::createActions()
+{
+    // Save Action
+    SaveAct = new QAction(tr("&Save"), this);
+    SaveAct->setShortcuts(QKeySequence::New);
+    SaveAct->setStatusTip(tr("Save the file"));
+
+    // Open Action
+    OpenAct = new QAction(tr("&Open"), this);
+    OpenAct->setShortcuts(QKeySequence::New);
+    OpenAct->setStatusTip(tr("Open the file"));
+
+    SaveAsAct = new QAction(tr("&Save As"), this);
+    SaveAsAct->setShortcuts(QKeySequence::New);
+    SaveAsAct->setStatusTip(tr("Save as a new file"));
+    //connect(newAct, &QAction::triggered, this, &MainWindow::newFile);
 }
 

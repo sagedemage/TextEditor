@@ -24,6 +24,7 @@ class MainWindow : public QMainWindow
         void handleOpenButton();
         void handleSaveAsButton();
         void createMenus();
+        void createActions();
 
     private:
         QPushButton *save_button;
@@ -39,9 +40,9 @@ class MainWindow : public QMainWindow
         void convertHomPathWithTilde();
         QMenu *fileMenu;
 
-        QAction *newAct;
-        QAction *openAct;
-        QAction *saveAct;
+        QAction *SaveAct;
+        QAction *OpenAct;
+        QAction *SaveAsAct;
 };
 
 #endif // MAINWINDOW_H
