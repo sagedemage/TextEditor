@@ -2,41 +2,17 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-
-    QGridLayout *layout = new QGridLayout();
-    QWidget *widget = new QWidget();
-    widget->setLayout(layout);
+    // Set central widget
+    widget = new QWidget();
     setCentralWidget(widget);
 
-    text_edit = new QTextEdit("");
+    createLayouts();
+    createWidgets();
 
-    // Create the button, make "this" the parent
-    save_button = new QPushButton("Save");
-    open_button = new QPushButton("Open");
-    save_as_button = new QPushButton("Save As");
-
-    hboxlayout = new QHBoxLayout();
-
-    hboxlayout->addWidget(save_button);
-    hboxlayout->addWidget(open_button);
-    hboxlayout->addWidget(save_as_button);
-
-    layout->addLayout(hboxlayout, 0, 0, 1, 1);
-
-    vboxlayout = new QVBoxLayout();
-    vboxlayout->addWidget(text_edit);
-
-    layout->addLayout(vboxlayout, 1, 0, 1, 1);
-
-    // Connect button signal to appropriate slot
-    connect(save_button, &QPushButton::clicked, this, &MainWindow::handleSaveButton);
-    connect(open_button, &QPushButton::clicked, this, &MainWindow::handleOpenButton);
-    connect(save_as_button, &QPushButton::clicked, this, &MainWindow::handleSaveAsButton);
-
+    // Set Window Title
     MainWindow::setWindowTitle(title);
 
     createActions();
-
     createMenus();
 }
 
@@ -145,8 +121,26 @@ void MainWindow::convertHomPathWithTilde() {
     file_path.replace(0, home_path_length, "~");
 }
 
+void MainWindow::createLayouts() {
+    /* Create Layout */
+    // Grid Layout
+    layout = new QGridLayout();
+    widget->setLayout(layout);
+
+    // V Box Layout
+    vboxlayout = new QVBoxLayout();
+    layout->addLayout(vboxlayout, 1, 0, 1, 1);
+}
+
+void MainWindow::createWidgets() {
+    // Create Widget
+    text_edit = new QTextEdit("");
+    vboxlayout->addWidget(text_edit);
+}
+
 void MainWindow::createMenus()
 {
+    /* Create Menus */
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(SaveAct);
     fileMenu->addAction(OpenAct);
@@ -155,6 +149,7 @@ void MainWindow::createMenus()
 
 void MainWindow::createActions()
 {
+    /* Create Actions */
     // Save Action
     SaveAct = new QAction(tr("&Save"), this);
     SaveAct->setShortcuts(QKeySequence::Save);
@@ -167,6 +162,7 @@ void MainWindow::createActions()
     OpenAct->setStatusTip(tr("Open the file"));
     connect(OpenAct, &QAction::triggered, this, &MainWindow::handleOpenButton);
 
+    // Save As Action
     SaveAsAct = new QAction(tr("&Save As"), this);
     SaveAsAct->setShortcuts(QKeySequence::SaveAs);
     SaveAsAct->setStatusTip(tr("Save as a new file"));
