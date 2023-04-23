@@ -23,6 +23,7 @@ class MainWindow : public QMainWindow
         void handleSaveButton();
         void handleOpenButton();
         void handleSaveAsButton();
+        void createMenus();
 
     private:
         QPushButton *save_button;
@@ -36,6 +37,11 @@ class MainWindow : public QMainWindow
         std::string getTextFromFile(std::ifstream &ReadFile);
         void changeWindowTitleForNewFilePath();
         void convertHomPathWithTilde();
+        QMenu *fileMenu;
+
+        QAction *newAct;
+        QAction *openAct;
+        QAction *saveAct;
 };
 
 #endif // MAINWINDOW_H

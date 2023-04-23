@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(save_as_button, &QPushButton::clicked, this, &MainWindow::handleSaveAsButton);
 
     MainWindow::setWindowTitle(title);
+
+    createMenus();
 }
 
 void MainWindow::handleSaveButton()
@@ -139,5 +141,13 @@ void MainWindow::convertHomPathWithTilde() {
     int home_path_length = home.length();
 
     file_path.replace(0, home_path_length, "~");
+}
+
+void MainWindow::createMenus()
+{
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(newAct);
+    fileMenu->addAction(openAct);
+    fileMenu->addAction(saveAct);
 }
 
