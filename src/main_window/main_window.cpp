@@ -122,7 +122,7 @@ void MainWindow::convertHomPathWithTilde() {
 }
 
 void MainWindow::createLayouts() {
-    /* Create Layout */
+    /* Create Layouts */
     // Grid Layout
     layout = new QGridLayout();
     widget->setLayout(layout);
@@ -133,7 +133,7 @@ void MainWindow::createLayouts() {
 }
 
 void MainWindow::createWidgets() {
-    // Create Widget
+    /* Create Widgets */
     text_edit = new QTextEdit("");
     vboxlayout->addWidget(text_edit);
 }
