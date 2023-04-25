@@ -28,6 +28,7 @@ class MainWindow : public QMainWindow
         QVBoxLayout *vboxlayout;
         QHBoxLayout *hboxlayout;
         QString file_path;
+        QString file_path_tilda;
         QString title = main_title + " - Untitled";
         QMenu *fileMenu;
         QAction *SaveAct;

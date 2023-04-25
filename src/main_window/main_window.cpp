@@ -22,9 +22,6 @@ void MainWindow::handleSaveButton()
     QString plain_text = text_edit->toPlainText();
     std::string text_string = plain_text.toStdString();
 
-    std::cout << text_string << std::endl;
-    std::cout << file_path.toStdString() << std::endl;
-
     if (file_path.toStdString() != "") {
         // Create and open a text file
         std::ofstream MyFile(file_path.toStdString());
@@ -71,18 +68,22 @@ std::string MainWindow::getTextFromFile(std::ifstream &ReadFile) {
 void MainWindow::handleOpenButton()
 {
     /* Open a file */
-    file_path = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
+    QString open_file_path = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
 
-    // Create and open a text file
-    std::ifstream ReadFile(file_path.toStdString());
+    if (open_file_path != "") {
+        file_path = open_file_path;
 
-    // get text from the text file
-    std::string text_of_file = MainWindow::getTextFromFile(ReadFile);
+        // Create and open a text file
+        std::ifstream ReadFile(file_path.toStdString());
 
-    // set text for the text edit widget
-    text_edit->setText(QString::fromStdString(text_of_file));
+        // get text from the text file
+        std::string text_of_file = MainWindow::getTextFromFile(ReadFile);
 
-    MainWindow::changeWindowTitleForNewFilePath();
+        // set text for the text edit widget
+        text_edit->setText(QString::fromStdString(text_of_file));
+
+        MainWindow::changeWindowTitleForNewFilePath();
+    }
 }
 
 void MainWindow::handleSaveAsButton()
@@ -114,7 +115,7 @@ void MainWindow::changeWindowTitleForNewFilePath() {
     MainWindow::convertHomPathWithTilde();
 
     if (file_path != "") {
-        title = main_title + " - " + file_path;
+        title = main_title + " - " + file_path_tilda;
         MainWindow::setWindowTitle(title);
     }
 }
@@ -125,7 +126,9 @@ void MainWindow::convertHomPathWithTilde() {
 
     int home_path_length = home.length();
 
-    file_path.replace(0, home_path_length, "~");
+    file_path_tilda = file_path;
+
+    file_path_tilda.replace(0, home_path_length, "~");
 }
 
 void MainWindow::createLayouts() {
