@@ -22,6 +22,9 @@ void MainWindow::handleSaveButton()
     QString plain_text = text_edit->toPlainText();
     std::string text_string = plain_text.toStdString();
 
+    std::cout << text_string << std::endl;
+    std::cout << file_path.toStdString() << std::endl;
+
     if (file_path.toStdString() != "") {
         // Create and open a text file
         std::ofstream MyFile(file_path.toStdString());
@@ -46,6 +49,9 @@ void MainWindow::handleSaveButton()
 
         // Close the file
         MyFile.close();
+
+        // Change title for new file path
+        MainWindow::changeWindowTitleForNewFilePath();
     }
 }
 
@@ -99,6 +105,7 @@ void MainWindow::handleSaveAsButton()
     // Close the file
     MyFile.close();
 
+    // Change title for new file path
     MainWindow::changeWindowTitleForNewFilePath();
 }
 
