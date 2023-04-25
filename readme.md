@@ -1,5 +1,7 @@
-# QtGuiApp
-Desktop Gui App written in C++ using Qt.
+# Text Editor
+Text Editor written in C++ using Qt.
+
+![Text Editor](pictures/text_editor_screenshot.webp)
 
 ## Install dependencies
 ```
