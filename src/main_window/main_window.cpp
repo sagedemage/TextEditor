@@ -2,38 +2,18 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-
-    QGridLayout *layout = new QGridLayout();
-    QWidget *widget = new QWidget();
-    widget->setLayout(layout);
+    // Set central widget
+    widget = new QWidget();
     setCentralWidget(widget);
 
-    text_edit = new QTextEdit("");
+    createLayouts();
+    createWidgets();
 
-    // Create the button, make "this" the parent
-    save_button = new QPushButton("Save");
-    open_button = new QPushButton("Open");
-    save_as_button = new QPushButton("Save As");
-
-    hboxlayout = new QHBoxLayout();
-
-    hboxlayout->addWidget(save_button);
-    hboxlayout->addWidget(open_button);
-    hboxlayout->addWidget(save_as_button);
-
-    layout->addLayout(hboxlayout, 0, 0, 1, 1);
-
-    vboxlayout = new QVBoxLayout();
-    vboxlayout->addWidget(text_edit);
-
-    layout->addLayout(vboxlayout, 1, 0, 1, 1);
-
-    // Connect button signal to appropriate slot
-    connect(save_button, &QPushButton::clicked, this, &MainWindow::handleSaveButton);
-    connect(open_button, &QPushButton::clicked, this, &MainWindow::handleOpenButton);
-    connect(save_as_button, &QPushButton::clicked, this, &MainWindow::handleSaveAsButton);
-
+    // Set Window Title
     MainWindow::setWindowTitle(title);
+
+    createActions();
+    createMenus();
 }
 
 void MainWindow::handleSaveButton()
@@ -66,6 +46,9 @@ void MainWindow::handleSaveButton()
 
         // Close the file
         MyFile.close();
+
+        // Change title for new file path
+        MainWindow::changeWindowTitleForNewFilePath();
     }
 }
 
@@ -85,18 +68,22 @@ std::string MainWindow::getTextFromFile(std::ifstream &ReadFile) {
 void MainWindow::handleOpenButton()
 {
     /* Open a file */
-    file_path = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
+    QString open_file_path = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::currentPath(), tr("Text files (*.txt)"));
 
-    // Create and open a text file
-    std::ifstream ReadFile(file_path.toStdString());
+    if (open_file_path != "") {
+        file_path = open_file_path;
 
-    // get text from the text file
-    std::string text_of_file = MainWindow::getTextFromFile(ReadFile);
+        // Create and open a text file
+        std::ifstream ReadFile(file_path.toStdString());
 
-    // set text for the text edit widget
-    text_edit->setText(QString::fromStdString(text_of_file));
+        // get text from the text file
+        std::string text_of_file = MainWindow::getTextFromFile(ReadFile);
 
-    MainWindow::changeWindowTitleForNewFilePath();
+        // set text for the text edit widget
+        text_edit->setText(QString::fromStdString(text_of_file));
+
+        MainWindow::changeWindowTitleForNewFilePath();
+    }
 }
 
 void MainWindow::handleSaveAsButton()
@@ -119,6 +106,7 @@ void MainWindow::handleSaveAsButton()
     // Close the file
     MyFile.close();
 
+    // Change title for new file path
     MainWindow::changeWindowTitleForNewFilePath();
 }
 
@@ -127,7 +115,7 @@ void MainWindow::changeWindowTitleForNewFilePath() {
     MainWindow::convertHomPathWithTilde();
 
     if (file_path != "") {
-        title = main_title + " - " + file_path;
+        title = main_title + " - " + file_path_tilda;
         MainWindow::setWindowTitle(title);
     }
 }
@@ -138,6 +126,56 @@ void MainWindow::convertHomPathWithTilde() {
 
     int home_path_length = home.length();
 
-    file_path.replace(0, home_path_length, "~");
+    file_path_tilda = file_path;
+
+    file_path_tilda.replace(0, home_path_length, "~");
+}
+
+void MainWindow::createLayouts() {
+    /* Create Layouts */
+    // Grid Layout
+    layout = new QGridLayout();
+    widget->setLayout(layout);
+
+    // V Box Layout
+    vboxlayout = new QVBoxLayout();
+    layout->addLayout(vboxlayout, 1, 0, 1, 1);
+}
+
+void MainWindow::createWidgets() {
+    /* Create Widgets */
+    text_edit = new QTextEdit("");
+    vboxlayout->addWidget(text_edit);
+}
+
+void MainWindow::createMenus()
+{
+    /* Create Menus */
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(SaveAct);
+    fileMenu->addAction(OpenAct);
+    fileMenu->addAction(SaveAsAct);
+}
+
+void MainWindow::createActions()
+{
+    /* Create Actions */
+    // Save Action
+    SaveAct = new QAction(tr("&Save"), this);
+    SaveAct->setShortcuts(QKeySequence::Save);
+    SaveAct->setStatusTip(tr("Save the file"));
+    connect(SaveAct, &QAction::triggered, this, &MainWindow::handleSaveButton);
+
+    // Open Action
+    OpenAct = new QAction(tr("&Open"), this);
+    OpenAct->setShortcuts(QKeySequence::Open);
+    OpenAct->setStatusTip(tr("Open the file"));
+    connect(OpenAct, &QAction::triggered, this, &MainWindow::handleOpenButton);
+
+    // Save As Action
+    SaveAsAct = new QAction(tr("&Save As"), this);
+    SaveAsAct->setShortcuts(QKeySequence::SaveAs);
+    SaveAsAct->setStatusTip(tr("Save as a new file"));
+    connect(SaveAsAct, &QAction::triggered, this, &MainWindow::handleSaveAsButton);
 }
 
